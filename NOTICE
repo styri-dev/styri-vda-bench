@@ -1,0 +1,12 @@
+styri-vda-bench
+Copyright 2026 Styri
+
+Licensed under the Apache License, Version 2.0.
+
+The image bundles vda5050-testkit (https://github.com/ksshen0000/vda5050-testkit),
+Copyright 2026 Kexuan Shen and contributors, Apache-2.0. Its LICENSE and NOTICE are in
+the image at /opt/bench/testkit-LICENSE and /opt/bench/testkit-NOTICE, including the
+VDA 5050 JSON schemas it bundles (MIT).
+
+VDA 5050 is a recommendation of the Verband der Automobilindustrie. This project isn't
+affiliated with or endorsed by the VDA.
