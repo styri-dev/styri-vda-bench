@@ -43,11 +43,29 @@ docker run --rm --network host -v "$PWD/out:/out" ghcr.io/styri-dev/styri-vda-be
 
 Exit codes: 0 pass, 1 fail, 2 no result.
 
+## Try it on Styri's demo
+
+Styri's [mixed-fleet demo](https://github.com/styri-dev/styri/tree/main/examples/mixed-fleet)
+runs its own broker, which only takes anonymous logins from inside Styri's container. So run
+the bench there, from the demo's folder:
+
+```bash
+docker run --rm --network "container:$(docker compose ps -q styri)" ghcr.io/styri-dev/styri-vda-bench:v0.1 --broker tcp://127.0.0.1:1883
+```
+
+Then send a robot somewhere, pause it, and stop it from the panel while the bench listens.
+
 ## What's inside
 
 [vda5050-testkit](https://github.com/ksshen0000/vda5050-testkit) (Apache-2.0) at a pinned
 commit, the same checks [Styri](https://github.com/styri-dev/styri) runs in its own CI.
 The full release follows on Jan 5.
+
+One change: VDA 5050's `2.0.0` tag has three schema defects that VDA 5050's own
+`release/2.0.0` branch fixes, so the bench checks 2.0 messages with those fixes.
+Instant actions name their type in `actionType`, orders use `allowedDeviationXY`, and
+`theta` is optional in a state's `nodeStates`. See
+[build/patch_schemas.py](build/patch_schemas.py).
 
 ## License
 
