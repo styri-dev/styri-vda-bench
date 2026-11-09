@@ -18,7 +18,12 @@ and a PASS doesn't mean a vehicle will work with any given fleet control.
 - **It only listens.** It sends nothing to your vehicles. Run your own orders and instant
   actions while it listens. A rule with no traffic to check shows `-`.
 - **It works offline.** Nothing leaves your network.
-- **VDA 5050 2.0, 2.1 and 3.0** traffic is checked against 15 rules.
+- **It checks VDA 5050 2.0, 2.1 and 3.0.** Every message is checked against the official
+  schema of its version, and the 15 rules apply to all three. 3.0's zones, corridors
+  and request/response messages aren't checked yet. 1.1 isn't supported: its messages fail
+  the schema check as an unknown version.
+- **3.0 vehicles may use a different topic prefix.** 3.0's example topics start with
+  `vda5050/` instead of `uagv/`. If yours do, add `--interface vda5050`.
 
 ## Options
 
